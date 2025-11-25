@@ -3,7 +3,6 @@ networks:
     driver: bridge
 
 services:
-  
   api.prati:
     build:
       context: build
