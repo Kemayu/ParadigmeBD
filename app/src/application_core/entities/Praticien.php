@@ -22,8 +22,8 @@ class Praticien
     protected string $email;
     protected string $telephone;
     protected bool $organisation;
-    protected bool $accepte_nouveau_patient;
-    public function __construct(Specialite $specialite, Structure $structure, string $nom, string $rpps_id, string $prenom, string $titre, string $ville, string $email, string $telephone, bool $organisation, bool $accepte_nouveau_patient)
+    protected bool $nouveau_patient;
+    public function __construct(Specialite $specialite, Structure $structure, string $nom, string $rpps_id, string $prenom, string $titre, string $ville, string $email, string $telephone, bool $organisation, bool $nouveau_patient)
     {
         $this->moyenPaiements = new ArrayCollection();
         $this->specialite = $specialite;
@@ -36,7 +36,7 @@ class Praticien
         $this->email = $email;
         $this->telephone = $telephone;
         $this->organisation = $organisation;
-        $this->accepte_nouveau_patient = $accepte_nouveau_patient;
+        $this->nouveau_patient = $nouveau_patient;
     }
     public function setId(string $id): void
     {
@@ -87,9 +87,9 @@ class Praticien
     {
         $this->organisation = $organisation;
     }
-        public function setAcceptClient(bool $accepte_nouveau_patient): void
+        public function setAcceptClient(bool $nouveau_patient): void
     {
-        $this->accepte_nouveau_patient = $accepte_nouveau_patient;
+        $this->nouveau_patient = $nouveau_patient;
     }
 
     public function getId(): string
