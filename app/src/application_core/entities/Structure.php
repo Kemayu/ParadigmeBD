@@ -2,6 +2,7 @@
 
 namespace doctrine\core\entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 class Structure
 {
@@ -9,12 +10,12 @@ class Structure
     protected string $nom;
     protected string $adresse;
     protected string $ville;
-    protected Collection $praticien;
+    protected Collection $praticiens;
     protected string $code_postal;
     protected string $telephone;
-    public function __construct(Collection $praticien,string $nom, string $adresse, string $ville, string $code_postal, string $telephone)
+    public function __construct(string $nom, string $adresse, string $ville, string $code_postal, string $telephone)
     {
-        $this->praticien = $praticien;
+        $this->praticiens = new ArrayCollection();
         $this->nom = $nom;
         $this->adresse = $adresse;
         $this->ville = $ville;
@@ -42,9 +43,9 @@ class Structure
         $this->ville = $ville;
     }
 
-    public function setPraticien(Collection $praticien): void
+    public function setPraticien(Collection $praticiens): void
     {
-        $this->praticien = $praticien;
+        $this->praticiens = $praticiens;
     }
 
     public function setCodePostal(string $code_postal): void

@@ -1,18 +1,20 @@
 <?php
 
 namespace doctrine\core\entities;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 class MoyenPaiement
 {
     protected int $id;
     protected string $libelle;
 
-    protected Collection $praticien;
+    protected Collection $praticiens;
     
 
-    public function __construct(Collection $praticien,string $libelle)
+    public function __construct(string $libelle)
     {
-        $this->praticien = $praticien;
+        $this->praticiens =  new ArrayCollection();
         $this->libelle = $libelle;
     }
     public function setId(int $id): void
@@ -23,9 +25,9 @@ class MoyenPaiement
     {
         $this->libelle = $libelle;
     }
-        public function setPraticien(Collection $praticien): void
+        public function setPraticien(Collection $praticiens): void
     {
-        $this->praticien = $praticien;
+        $this->praticiens = $praticiens;
     }
     public function getId(): int
     {
@@ -37,7 +39,7 @@ class MoyenPaiement
     }
         public function getPraticien(): Collection
     {
-        return $this->praticien;
+        return $this->praticiens;
     }
 
 }

@@ -2,8 +2,10 @@
 
 namespace doctrine\core\entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use doctrine\core\entities\Specialite;
 use doctrine\core\entities\Structure;
+use Doctrine\Common\Collections\Collection;
 
 class Praticien
 {
@@ -12,6 +14,7 @@ class Praticien
     protected string $rpps_id;
     protected Specialite $specialite;
     protected Structure $structure;
+    protected Collection $moyenPaiements;
 
     protected string $prenom;
     protected string $titre;
@@ -22,6 +25,7 @@ class Praticien
     protected bool $accepte_nouveau_patient;
     public function __construct(Specialite $specialite, Structure $structure, string $nom, string $rpps_id, string $prenom, string $titre, string $ville, string $email, string $telephone, bool $organisation, bool $accepte_nouveau_patient)
     {
+        $this->moyenPaiements = new ArrayCollection();
         $this->specialite = $specialite;
         $this->structure = $structure;
         $this->nom = $nom;
@@ -46,9 +50,21 @@ class Praticien
     {
         $this->structure = $structure;
     }
+        public function setMoyenPaiement(Collection $moyenPaiements): void
+    {
+        $this->moyenPaiements = $moyenPaiements;
+    }
     public function setNom(string $nom): void
     {
         $this->nom = $nom;
+    }
+        public function setVille(string $ville): void
+    {
+        $this->ville = $ville;
+    }
+        public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
     public function setRpps_id(string $rpps_id): void
     {
@@ -88,6 +104,8 @@ class Praticien
     {
         return $this->structure;
     }
+    
+    
     public function getTitre(): string
     {
         return $this->titre;
@@ -111,5 +129,9 @@ class Praticien
     public function getTelephone(): string
     {
         return $this->telephone;
+    }
+    public function getMoyenPaiement(): Collection
+    {
+        return $this->moyenPaiements;
     }
 }

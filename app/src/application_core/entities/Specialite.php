@@ -1,21 +1,23 @@
 <?php
 
 namespace doctrine\core\entities;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 class Specialite
 {
     protected int $id;
-    protected Collection $motifvisite;
-    protected Collection $praticien;
+    protected Collection $motifvisites;
+    protected Collection $praticiens;
     protected string $libelle;
 
     protected string $description;
 
 
-    public function __construct(Collection $motifvisite, Collection $praticien,string $libelle, string $description)
+    public function __construct(string $libelle, string $description)
     {
-        $this->motifvisite = $motifvisite;
-        $this->praticien = $praticien;
+        $this->praticiens = new ArrayCollection();
+        $this->motifvisites = new ArrayCollection();
         $this->libelle = $libelle;
         $this->description = $description;
     }
@@ -26,12 +28,12 @@ class Specialite
 
     public function setMotifVisite(Collection $motifvisite): void
     {
-        $this->motifvisite = $motifvisite;
+        $this->motifvisites = $motifvisite;
     }
 
     public function setPraticien(Collection $praticien): void
     {
-        $this->praticien = $praticien;
+        $this->praticiens = $praticien;
     }
 
     public function setLibelle(string $libelle): void
@@ -50,11 +52,11 @@ class Specialite
     }
         public function getPraticien(): Collection
     {
-        return $this->praticien;
+        return $this->praticiens;
     }
         public function getMotifVisite(): Collection
     {
-        return $this->motifvisite;
+        return $this->motifvisites;
     }
     public function getLibelle(): string
     {
