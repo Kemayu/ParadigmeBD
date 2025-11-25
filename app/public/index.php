@@ -18,19 +18,18 @@ try {
     $config = ORMSetup::createXMLMetadataConfiguration([$mapping_path], $isDevMode);
     $connection = DriverManager::getConnection($dbParams, $config);
     $entityManager = new EntityManager($connection, $config);
-
-    $specialiteRepository = $entityManager->getRepository(Structure::class);
-    $s = $specialiteRepository->find(1);
     
-    if ($s === null) {
-        echo "Spectacle non trouvé\n";
-        exit;
+    $structureRepository = $entityManager->getRepository(Structure::class);
+    $structures = $structureRepository->findAll();
+    
+    if (!empty($structures)) {
+        $firstStructure = $structures[0];
+        echo "Nom: " . $firstStructure->getNom() . "\n";
     }
-    
-    echo "Titre: " . $s->titre . "\n";
-   
-    
-    
-} catch (Exception $e) {
-    echo "Erreur: " . $e->getMessage() . "\n";
-}
+        
+        
+        
+        
+    } catch (Exception $e) {
+        echo "Erreur: " . $e->getMessage() . "\n";
+    }
