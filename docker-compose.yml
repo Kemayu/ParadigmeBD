@@ -1,9 +1,9 @@
 networks:
-  prati.net:
+  doctrine.net:
     driver: bridge
 
 services:
-  api.prati:
+  api.doctrine:
     build:
       context: build
       dockerfile: 8.4-cli.Dockerfile
@@ -13,7 +13,7 @@ services:
       - ./app:/var/php
     working_dir: /var/php
     networks:
-      - prati.net
+      - doctrine.net
     depends_on:
       - prati.db
     command: sh -c "composer install && php -S 0.0.0.0:80 -t /var/php/public"
@@ -24,7 +24,7 @@ services:
     ports:
       - '5432:5432'
     networks:
-      - prati.net
+      - doctrine.net
     volumes:
       # - ./sql:/var/sql
       - ./sql/prati:/docker-entrypoint-initdb.d/
@@ -34,5 +34,5 @@ services:
     ports:
       - '8080:8080'
     networks:
-      - prati.net
+      - doctrine.net
 
