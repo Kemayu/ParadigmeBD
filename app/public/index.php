@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use doctrine\core\entities\Specialite;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
@@ -17,8 +18,8 @@ try {
     $connection = DriverManager::getConnection($dbParams, $config);
     $entityManager = new EntityManager($connection, $config);
 
-    $spectacleRepository = $entityManager->getRepository(Spectacle::class);
-    $s = $spectacleRepository->find(1);
+    $specialiteRepository = $entityManager->getRepository(Specialite::class);
+    $s = $specialiteRepository->find(1);
     
     if ($s === null) {
         echo "Spectacle non trouvé\n";
@@ -26,13 +27,9 @@ try {
     }
     
     echo "Titre: " . $s->titre . "\n";
-    echo "Description: " . $s->description . "\n";
-    echo "Lieu: " . $s->lieu->nom . "\n";
-    echo "Séances:\n";
+   
     
-    foreach ($s->seances as $seance) {
-        echo "  - " . $seance->date . " à " . $seance->heure . "\n";
-    }
+    
 } catch (Exception $e) {
     echo "Erreur: " . $e->getMessage() . "\n";
 }
