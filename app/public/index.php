@@ -4,13 +4,14 @@ declare(strict_types=1);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use doctrine\core\entities\Specialite;
+use doctrine\core\entities\Structure;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
 use Paradigme\Domain\Entities\Spectacle;
 
 try {
-    $mapping_path = __DIR__ . '/../infrastructure/mapping/';
+    $mapping_path = __DIR__ . '/../src/infrastructure/mapping/';
     $isDevMode = true;
     $dbParams = parse_ini_file(__DIR__ . '/../config/prati.ini');
     
@@ -18,7 +19,7 @@ try {
     $connection = DriverManager::getConnection($dbParams, $config);
     $entityManager = new EntityManager($connection, $config);
 
-    $specialiteRepository = $entityManager->getRepository(Specialite::class);
+    $specialiteRepository = $entityManager->getRepository(Structure::class);
     $s = $specialiteRepository->find(1);
     
     if ($s === null) {
