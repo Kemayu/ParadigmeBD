@@ -82,7 +82,7 @@ class Praticien
     }
     public function getSpecialite(): Specialite
     {
-        return $this->specialites;
+        return $this->specialite;
     }
     public function getStructure(): Structure
     {
