@@ -12,7 +12,7 @@
                 <field name="telephone" column="telephone" type="string"/>
                 <one-to-many field="praticiens"
                              target-entity="doctrine\core\entities\Praticien"
-                             mapped-by="praticien">
+                             mapped-by="structure">
                 </one-to-many>
         </entity>
 </doctrine-mapping>

@@ -2,6 +2,8 @@
 
 namespace doctrine\core\entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use doctrine\core\entities\Specialite;
 
 class MotifVisite
@@ -10,9 +12,11 @@ class MotifVisite
     protected string $libelle;
 
     protected Specialite $specialite;
+    protected Collection $praticien;
 
     public function __construct(string $libelle, Specialite $specialite)
     {
+        $this->praticien = new ArrayCollection();
         $this->libelle = $libelle;
         $this->specialite = $specialite;
     }
@@ -28,6 +32,10 @@ class MotifVisite
     {
         $this->specialite = $specialite;
     }
+        public function setPraticien(Collection $praticien): void
+    {
+        $this->praticien = $praticien;
+    }
     public function getId(): int
     {
         return $this->id;
@@ -39,5 +47,9 @@ class MotifVisite
     public function getSpecialite(): Specialite
     {
         return $this->specialite;
+    }
+        public function getPraticien(): Collection
+    {
+        return $this->praticien;
     }
 }

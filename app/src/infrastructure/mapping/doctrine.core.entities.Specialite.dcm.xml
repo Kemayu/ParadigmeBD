@@ -9,7 +9,7 @@
                 <field name="description" column="description" type="string"/>
                  <one-to-many field="motifvisites"
                              target-entity="doctrine\core\entities\MotifVisite"
-                             mapped-by="motif_visite">
+                             mapped-by="specialite">
                 </one-to-many>
                 <one-to-many field="praticiens"
                              target-entity="doctrine\core\entities\Praticien"

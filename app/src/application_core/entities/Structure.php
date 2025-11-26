@@ -58,6 +58,10 @@ class Structure
         $this->telephone = $telephone;
     }
 
+        public function getPraticien(): Collection
+    {
+        return $this->praticiens;
+    }
     public function getId(): string
     {
         return $this->id;

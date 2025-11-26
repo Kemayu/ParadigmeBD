@@ -22,9 +22,9 @@ class Praticien
     protected string $ville;
     protected string $email;
     protected string $telephone;
-    protected bool $organisation;
-    protected bool $nouveau_patient;
-    public function __construct(Specialite $specialite, Structure $structure, string $nom, string $rpps_id, string $prenom, string $titre, string $ville, string $email, string $telephone, bool $organisation, bool $nouveau_patient)
+    protected int $organisation;
+    protected int $nouveau_patient;
+    public function __construct(Specialite $specialite, Structure $structure, string $nom, string $rpps_id, string $prenom, string $titre, string $ville, string $email, string $telephone, int $organisation, int $nouveau_patient)
     {
         $this->moyenPaiements = new ArrayCollection();
         $this->motifvisites = new ArrayCollection();
@@ -85,11 +85,11 @@ class Praticien
         $this->telephone = $telephone;
     }
 
-    public function setOrganisation(bool $organisation): void
+    public function setOrganisation(int $organisation): void
     {
         $this->organisation = $organisation;
     }
-    public function setAcceptClient(bool $nouveau_patient): void
+    public function setAcceptClient(int $nouveau_patient): void
     {
         $this->nouveau_patient = $nouveau_patient;
     }

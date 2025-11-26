@@ -9,7 +9,7 @@
 
                 <many-to-one field="specialite"
                              target-entity="doctrine\core\entities\Specialite"
-                             inverted-by="motifvisites">
+                             inversed-by="motifvisites">
                              <join-column name="specialite_id" referenced-column-name="id"/>
                 </many-to-one>
 

@@ -4,7 +4,8 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
         <entity name="doctrine\core\entities\Praticien" table="praticien">
-                <id name="id" column="id" type="string"></id>
+                <id name="id" column="id" type="string">
+                </id>
                 <field name="nom" column="nom" type="string"/>
                 <field name="rpps_id" column="rpps_id" type="string"/>
                 <field name="prenom" column="prenom" type="string"/>
@@ -12,8 +13,8 @@
                 <field name="ville" column="ville" type="string"/>
                 <field name="email" column="email" type="string"/>
                 <field name="telephone" column="telephone" type="string"/>
-                <field name="organisation" column="organisation" type="boolean"/>
-                <field name="nouveau_patient" column="nouveau_patient" type="boolean"/>
+                <field name="organisation" column="organisation" type="integer"/>
+                <field name="nouveau_patient" column="nouveau_patient" type="integer"/>
 
                 <many-to-one field="specialite"
                 target-entity="doctrine\core\entities\Specialite"
@@ -22,7 +23,7 @@
 
                 <many-to-one field="structure"
                 target-entity="doctrine\core\entities\Structure"
-                inversed-by="structure">
+                inversed-by="praticiens">
                 </many-to-one>
 
                 <many-to-many field="moyenPaiements"
