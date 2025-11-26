@@ -15,6 +15,7 @@ class Praticien
     protected Specialite $specialite;
     protected Structure $structure;
     protected Collection $moyenPaiements;
+    protected Collection $motifvisites;
 
     protected string $prenom;
     protected string $titre;
@@ -26,6 +27,7 @@ class Praticien
     public function __construct(Specialite $specialite, Structure $structure, string $nom, string $rpps_id, string $prenom, string $titre, string $ville, string $email, string $telephone, bool $organisation, bool $nouveau_patient)
     {
         $this->moyenPaiements = new ArrayCollection();
+        $this->motifvisites = new ArrayCollection();
         $this->specialite = $specialite;
         $this->structure = $structure;
         $this->nom = $nom;
@@ -50,7 +52,7 @@ class Praticien
     {
         $this->structure = $structure;
     }
-        public function setMoyenPaiement(Collection $moyenPaiements): void
+    public function setMoyenPaiement(Collection $moyenPaiements): void
     {
         $this->moyenPaiements = $moyenPaiements;
     }
@@ -58,11 +60,11 @@ class Praticien
     {
         $this->nom = $nom;
     }
-        public function setVille(string $ville): void
+    public function setVille(string $ville): void
     {
         $this->ville = $ville;
     }
-        public function setEmail(string $email): void
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
@@ -83,11 +85,11 @@ class Praticien
         $this->telephone = $telephone;
     }
 
-        public function setOrganisation(bool $organisation): void
+    public function setOrganisation(bool $organisation): void
     {
         $this->organisation = $organisation;
     }
-        public function setAcceptClient(bool $nouveau_patient): void
+    public function setAcceptClient(bool $nouveau_patient): void
     {
         $this->nouveau_patient = $nouveau_patient;
     }
@@ -100,12 +102,20 @@ class Praticien
     {
         return $this->specialite;
     }
+    public function getMotifVisite(): Collection
+    {
+        return $this->motifvisites;
+    }
+    public function getMoyenPaiement(): Collection
+    {
+        return $this->moyenPaiements;
+    }
     public function getStructure(): Structure
     {
         return $this->structure;
     }
-    
-    
+
+
     public function getTitre(): string
     {
         return $this->titre;
@@ -129,9 +139,5 @@ class Praticien
     public function getTelephone(): string
     {
         return $this->telephone;
-    }
-    public function getMoyenPaiement(): Collection
-    {
-        return $this->moyenPaiements;
     }
 }
