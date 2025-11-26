@@ -6,5 +6,18 @@
         <entity name="doctrine\core\entities\MoyenPaiement" table="moyen_paiement">
                 <id name="id" column="id" type="integer"></id>
                 <field name="libelle" column="libelle" type="string"/>
+
+                <many-to-many field="praticiens"
+                        target-entity="doctrine\core\entities\Praticien"
+                        inversed-by="moyenPaiements">
+                        <join-table name="praticien2moyen">
+                                <join-columns>
+                                <join-column name="praticien_id" referenced-column-name="id"/>
+                                </join-columns>
+                                <inverse-join-columns>
+                                <join-column name="moyen_id" referenced-column-name="id"/>
+                                </inverse-join-columns>
+                        </join-table>
+                </many-to-many>
         </entity>
 </doctrine-mapping>

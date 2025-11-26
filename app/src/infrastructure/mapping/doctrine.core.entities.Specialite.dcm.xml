@@ -11,5 +11,9 @@
                              target-entity="doctrine\core\entities\MotifVisite"
                              mapped-by="motif_visite">
                 </one-to-many>
+                <one-to-many field="praticiens"
+                             target-entity="doctrine\core\entities\Praticien"
+                             mapped-by="specialite_id">
+                </one-to-many>
         </entity>
 </doctrine-mapping>
