@@ -29,15 +29,18 @@ try {
     $specialites = $specialiteRepository->find(1);
     $praticien = $praticienRepository->find("8ae1400f-d46d-3b50-b356-269f776be532");
 
-    var_dump($praticien);
+    // var_dump($praticien);
     if (!empty($specialites)) {
 
-        echo "1) <br> Id : " . $specialites->getId() . "<br> Libelle: " . $specialites->getLibelle()  . "<br> Description : " . $specialites->getDescription();
+        echo "1) <br> Id : " . $specialites->getId() . "<br> Libelle: " . $specialites->getLibelle()  . "<br> Description : " 
+        . $specialites->getDescription();
     }
 
     if (!empty($praticien)) {
 
-        echo "<br> 2) <br> Id : " . $praticien->getId() . "<br> Nom: " . $praticien->getNom()  . "<br> Prénom : " . $praticien->getPrenom() . "<br> Ville : " . $praticien->getVille() . "<br> Email : " . $praticien->getEmail() . "<br> Télephone : " . $praticien->getTelephone();
+        echo "<br> 2) <br> Id : " . $praticien->getId() . "<br> Nom: " . $praticien->getNom()  . "<br> Prénom : " . $praticien->getPrenom()
+         . "<br> Ville : " . $praticien->getVille() . "<br> Email : " . $praticien->getEmail() . "<br> Téléphone : "
+          . $praticien->getTelephone() . "<br> 3) Spécialité : " . $praticien->getSpecialite()->getLibelle();
     }
 } catch (Exception $e) {
     echo "Erreur: " . $e->getMessage() . "\n";
