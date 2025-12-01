@@ -52,9 +52,13 @@ class Praticien
     {
         $this->structure = $structure;
     }
-    public function setMoyenPaiement(Collection $moyenPaiements): void
+    public function setMoyenPaiement(ArrayCollection $moyenPaiements): void
     {
         $this->moyenPaiements = $moyenPaiements;
+    }
+        public function setMotifVisite(ArrayCollection $motifvisites): void
+    {
+        $this->motifvisites = $motifvisites;
     }
     public function setNom(string $nom): void
     {

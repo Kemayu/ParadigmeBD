@@ -3,7 +3,8 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-        <entity name="doctrine\core\entities\Specialite" table="specialite">
+        <entity name="doctrine\core\entities\Specialite" table="specialite"
+        repository-class="doctrine\infra\SpecialiteRepository">
                 <id name="id" type="integer" column="id"></id>
                 <field name="libelle" column="libelle" type="string"/>
                 <field name="description" column="description" type="string"/>
@@ -13,7 +14,7 @@
                 </one-to-many>
                 <one-to-many field="praticiens"
                              target-entity="doctrine\core\entities\Praticien"
-                             mapped-by="specialite_id">
+                             mapped-by="specialite">
                 </one-to-many>
         </entity>
 </doctrine-mapping>

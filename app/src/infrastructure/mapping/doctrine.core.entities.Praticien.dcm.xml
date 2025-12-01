@@ -3,7 +3,8 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-        <entity name="doctrine\core\entities\Praticien" table="praticien">
+        <entity name="doctrine\core\entities\Praticien" table="praticien"
+        repository-class="doctrine\infra\PraticienRepository">
                 <id name="id" column="id" type="string">
                 </id>
                 <field name="nom" column="nom" type="string"/>
@@ -29,6 +30,14 @@
                 <many-to-many field="moyenPaiements"
                 target-entity="doctrine\core\entities\MoyenPaiement"
                 inversed-by="moyen_paiement">
+                <join-table name="praticien2moyen">
+                        <join-columns>
+                        <join-column name="praticien_id" referenced-column-name="id"/>
+                        </join-columns>
+                        <inverse-join-columns>
+                        <join-column name="moyen_id" referenced-column-name="id"/>
+                        </inverse-join-columns>
+                </join-table>
                 </many-to-many>
 
                 <many-to-many field="motifvisites"
